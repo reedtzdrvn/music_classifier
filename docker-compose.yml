@@ -8,9 +8,9 @@ services:
       MODELS_DIR: /models
       MAX_WINDOWS: "24"
     volumes:
-      # Путь к весам на хосте. По умолчанию ../practical/runs (как в репозитории),
-      # на сервере переопредели через .env: MODELS_HOST_PATH=/абсолютный/путь/к/runs
-      - ${MODELS_HOST_PATH:-../practical/runs}:/models:ro
+      # Веса лежат в репозитории (models/, через Git LFS). При необходимости
+      # путь можно переопределить через .env: MODELS_HOST_PATH=/другой/путь
+      - ${MODELS_HOST_PATH:-./models}:/models:ro
     expose:
       - "9000"
     healthcheck:

@@ -1,0 +1,45 @@
+{
+  "architectures": [
+    "ASTForAudioClassification"
+  ],
+  "attention_probs_dropout_prob": 0.0,
+  "dtype": "float32",
+  "frequency_stride": 10,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.0,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "Electronic",
+    "1": "Experimental",
+    "2": "Folk",
+    "3": "Hip-Hop",
+    "4": "Instrumental",
+    "5": "International",
+    "6": "Pop",
+    "7": "Rock"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "label2id": {
+    "Electronic": 0,
+    "Experimental": 1,
+    "Folk": 2,
+    "Hip-Hop": 3,
+    "Instrumental": 4,
+    "International": 5,
+    "Pop": 6,
+    "Rock": 7
+  },
+  "layer_norm_eps": 1e-12,
+  "max_length": 1024,
+  "model_type": "audio-spectrogram-transformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "num_mel_bins": 128,
+  "patch_size": 16,
+  "problem_type": "single_label_classification",
+  "qkv_bias": true,
+  "time_stride": 10,
+  "transformers_version": "5.0.0",
+  "use_cache": false
+}
