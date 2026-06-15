@@ -1,0 +1,68 @@
+name: Deploy
+
+# При пуше в main: заходим по SSH на сервер, тянем свежий код и веса (LFS),
+# пересобираем и перезапускаем docker compose.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+# Параллельные деплои не нужны — отменяем предыдущий запуск.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || '22' }}
+          command_timeout: 40m
+          script: |
+            set -e
+            cd "${{ secrets.DEPLOY_PATH }}"
+
+            echo "==> Обновляем код"
+            git lfs install
+            git fetch --all --prune
+            git reset --hard origin/main
+
+            echo "==> Тянем веса моделей (Git LFS)"
+            git lfs pull
+
+            echo "==> Пересобираем и перезапускаем контейнеры"
+            docker compose up -d --build --remove-orphans
+
+            echo "==> Чистим неиспользуемые образы"
+            docker image prune -f
+
+            echo "==> Статус"
+            docker compose ps
+
+      - name: Smoke-check API (через SSH)
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || '22' }}
+          script: |
+            echo "==> Ждём, пока backend ответит на /api/health (до 3 минут)"
+            for i in $(seq 1 18); do
+              if curl -fsS http://localhost:8000/api/health >/dev/null; then
+                echo "OK: сервис поднялся"
+                curl -s http://localhost:8000/api/health
+                exit 0
+              fi
+              echo "  попытка $i: ещё не готов, ждём 10с..."
+              sleep 10
+            done
+            echo "ОШИБКА: сервис не поднялся за отведённое время"
+            docker compose logs --tail=50 inference
+            exit 1
