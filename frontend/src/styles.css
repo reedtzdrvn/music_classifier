@@ -1,20 +1,20 @@
 :root {
-  --bg: #efe8da;
-  --surface: #fdfaf3;
-  --surface-2: #f5efe2;
-  --ink: #382f25;
-  --ink-2: #6b5f4f;
-  --line: #e1d7c3;
-  --line-2: #ebe3d3;
+  --bg: #f2f5f9;
+  --surface: #ffffff;
+  --surface-2: #f6f8fc;
+  --ink: #313844;
+  --ink-2: #727b89;
+  --line: #e5eaf1;
+  --line-2: #eef2f8;
 
-  --olive: #7d7f49;
-  --olive-deep: #5b5d31;
-  --olive-soft: #e8e8d2;
-  --coffee: #8a6a4f;
-  --coffee-deep: #6c4d36;
-  --coffee-soft: #ecdfd0;
+  --blue: #85a9d8;
+  --blue-deep: #4f78b4;
+  --blue-soft: #e8f1fb;
+  --lav: #9d8fc9;
+  --lav-deep: #6f5fb0;
+  --lav-soft: #eee9f7;
 
-  --shadow: 0 1px 2px rgba(56, 47, 37, 0.05), 0 10px 26px rgba(56, 47, 37, 0.06);
+  --shadow: 0 1px 2px rgba(49, 56, 68, 0.05), 0 10px 26px rgba(49, 56, 68, 0.06);
   --radius: 16px;
 }
 
@@ -44,11 +44,10 @@ body {
 
 h1,
 h2,
-h3,
-.hero-genre {
-  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
-  font-weight: 600;
-  font-style: normal;
+h3 {
+  font-family: inherit;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 /* ---------- topbar ---------- */
@@ -65,18 +64,17 @@ h3,
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Fraunces', serif;
-  font-weight: 600;
+  font-weight: 800;
   font-size: 21px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 .brand-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--coffee);
-  border: 2px solid var(--coffee-soft);
+  background: var(--blue);
+  border: 2px solid var(--blue-soft);
 }
 .brand-sub {
   color: var(--ink-2);
@@ -106,12 +104,11 @@ h3,
 .intro h1 {
   font-size: clamp(30px, 4.4vw, 48px);
   line-height: 1.12;
-  letter-spacing: -0.01em;
   margin: 0 0 16px;
   color: var(--ink);
 }
 .grad {
-  color: var(--coffee-deep);
+  color: var(--blue-deep);
   font-style: normal;
 }
 .intro p {
@@ -140,6 +137,7 @@ h3,
 .section-title {
   margin: 0 0 4px;
   font-size: 19px;
+  font-weight: 800;
   color: var(--ink);
 }
 .section-hint {
@@ -189,7 +187,7 @@ h3,
 }
 .seg-on,
 .seg-on:hover {
-  background: var(--olive);
+  background: var(--blue);
   color: #fff;
 }
 .seg:disabled {
@@ -208,8 +206,8 @@ h3,
 }
 .dropzone:hover,
 .dropzone-active {
-  border-color: var(--olive);
-  background: var(--olive-soft);
+  border-color: var(--blue);
+  background: var(--blue-soft);
 }
 .dropzone-off {
   opacity: 0.5;
@@ -255,7 +253,7 @@ h3,
   height: 18px;
   border-radius: 50%;
   border: 2.5px solid var(--line);
-  border-top-color: var(--olive);
+  border-top-color: var(--blue);
   animation: spin 0.8s linear infinite;
   flex: none;
 }
@@ -273,7 +271,7 @@ h3,
 .progress-fill {
   height: 100%;
   border-radius: 20px;
-  background: var(--olive);
+  background: var(--blue);
   transition: width 0.2s ease;
 }
 .progress-label {
@@ -282,7 +280,7 @@ h3,
   color: var(--ink-2);
 }
 .progress-label.analyzing {
-  color: var(--coffee-deep);
+  color: var(--blue-deep);
   font-weight: 600;
   animation: pulse 1.5s ease-in-out infinite;
 }
@@ -310,8 +308,8 @@ h3,
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
-  background: var(--olive-soft);
-  border-color: #d6d6bd;
+  background: var(--lav-soft);
+  border-color: #e0d9f0;
 }
 .hero-icon {
   font-size: 44px;
@@ -329,10 +327,10 @@ h3,
 }
 .hero-genre {
   font-size: clamp(32px, 5vw, 44px);
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   line-height: 1.08;
-  color: var(--coffee-deep);
+  color: var(--lav-deep);
   margin-top: 2px;
 }
 .hero-sub {
@@ -349,7 +347,7 @@ h3,
   gap: 12px;
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid #d6d6bd;
+  border-top: 1px solid #e0d9f0;
 }
 .hero-conf {
   display: flex;
@@ -357,9 +355,9 @@ h3,
   align-items: flex-start;
 }
 .hero-conf-val {
-  font-family: 'Fraunces', serif;
+  font-weight: 800;
   font-size: 32px;
-  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 .hero-conf-cap {
@@ -375,12 +373,12 @@ h3,
   font-weight: 700;
   padding: 5px 12px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid #d6d6bd;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #e0d9f0;
   color: var(--ink-2);
 }
 .badge-model {
-  background: var(--coffee);
+  background: var(--blue);
   color: #fff;
   border: none;
 }
@@ -417,12 +415,12 @@ h3,
 .prob-fill {
   height: 100%;
   border-radius: 20px;
-  background: #cdbfa6;
+  background: #c2cede;
   transform-origin: left;
   animation: grow 0.65s ease both;
 }
 .prob-top .prob-fill {
-  background: var(--olive);
+  background: var(--blue);
 }
 @keyframes grow {
   from {
@@ -503,8 +501,8 @@ h3,
   display: flex;
   gap: 14px;
   align-items: center;
-  border-color: #e0c4ba;
-  background: #f3e7df;
+  border-color: #e7c7c7;
+  background: #f7eaea;
 }
 .error-icon {
   font-size: 24px;
