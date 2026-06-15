@@ -52,17 +52,19 @@ export default function App() {
       </header>
 
       <main className="container">
-        <section className="intro">
-          <h1>
-            Определите жанр трека <span className="grad">и&nbsp;поймите почему</span>
-          </h1>
-          <p>
-            Загрузите аудио — нейросеть предскажет жанр, покажет вероятности всех классов,
-            мел-спектрограмму и подсветит фрагменты, на которые она опиралась.
-          </p>
-        </section>
+        <section className="landing">
+          <div className="intro">
+            <h1>
+              Определите жанр трека <span className="grad">и&nbsp;поймите почему</span>
+            </h1>
+            <p>
+              Загрузите аудио — нейросеть предскажет жанр, покажет вероятности всех классов,
+              мел-спектрограмму и подсветит фрагменты, на которые она опиралась.
+            </p>
+          </div>
 
-        <UploadZone model={model} onModel={onModel} onFile={onFile} disabled={busy} />
+          <UploadZone model={model} onModel={onModel} onFile={onFile} disabled={busy} />
+        </section>
 
         {busy && (
           <ProgressCard phase={phase} progress={progress} name={file?.name} />
@@ -80,8 +82,10 @@ export default function App() {
 
         {phase === 'done' && result && (
           <div className="results">
-            <GenreHero result={result} />
-            <ProbabilityBars classes={result.classes} />
+            <div className="results-top">
+              <GenreHero result={result} />
+              <ProbabilityBars classes={result.classes} />
+            </div>
 
             <div className="card spec-card">
               <h3 className="section-title">Мел-спектрограмма</h3>
