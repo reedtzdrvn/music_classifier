@@ -118,10 +118,6 @@ export default function App() {
           </div>
         )}
       </main>
-
-      <footer className="foot">
-        Дипломный проект · FMA-small (8 жанров) · FastAPI + PyTorch + React
-      </footer>
     </div>
   )
 }
