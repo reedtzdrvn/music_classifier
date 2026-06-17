@@ -316,6 +316,7 @@ h3 {
   line-height: 1;
 }
 .hero-body {
+  width: 100%;
   min-width: 0;
 }
 .hero-file {
