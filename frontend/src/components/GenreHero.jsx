@@ -10,6 +10,11 @@ export default function GenreHero({ result }) {
     <div className="hero card">
       <div className="hero-icon">{m.icon}</div>
       <div className="hero-body">
+        {result.filename && (
+          <div className="hero-file" title={result.filename}>
+            🎵 {result.filename}
+          </div>
+        )}
         <div className="hero-label">Предсказанный жанр</div>
         <div className="hero-genre">{result.predicted_genre}</div>
         <div className="hero-sub">{m.ru}</div>

@@ -318,6 +318,16 @@ h3 {
 .hero-body {
   min-width: 0;
 }
+.hero-file {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-bottom: 6px;
+}
 .hero-label {
   text-transform: uppercase;
   letter-spacing: 0.1em;

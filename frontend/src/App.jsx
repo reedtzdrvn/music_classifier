@@ -24,7 +24,9 @@ export default function App() {
         setProgress(pct)
         if (pct >= 100) setPhase('analyzing')
       })
-      setResult(data)
+      // Сохраняем исходное имя файла: берём из ответа бэкенда, а если его
+      // там нет — из самого загруженного файла.
+      setResult({ ...data, filename: data.filename || f.name })
       setPhase('done')
     } catch (e) {
       setError(e.message)
